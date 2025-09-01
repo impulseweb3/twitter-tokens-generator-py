@@ -1,6 +1,6 @@
 import asyncio
 
-from twitter import Twitter
+from twitter.twitter import Twitter
 
 
 async def main() -> None:
