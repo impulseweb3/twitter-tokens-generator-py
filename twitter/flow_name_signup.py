@@ -1,4 +1,5 @@
 from typing import TYPE_CHECKING
+from urllib import parse
 
 if TYPE_CHECKING:
     from twitter.twitter import Twitter
@@ -10,7 +11,7 @@ class FlowNameSignup:
     def __init__(self, twitter: 'Twitter') -> None:
         self.twitter = twitter
 
-    async def flow_name_signup(self) -> None:
+    async def flow_name_signup(self) -> str:
         cookies = {
             'gt': self.twitter.guest_token,
         }
@@ -102,3 +103,8 @@ class FlowNameSignup:
         )
 
         self.twitter.flow_token = json['flow_token']
+
+        blob = json['subtasks'][10]['web_modal']['url'].split('data=')[1].split('"')[0]
+        blob = parse.unquote(blob)
+
+        return blob
