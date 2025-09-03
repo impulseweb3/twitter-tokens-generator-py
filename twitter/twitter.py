@@ -18,8 +18,8 @@ class Twitter:
     async def guest_activate(self) -> None:
         await GuestActivate(self).guest_activate()
 
-    async def flow_name_signup(self) -> str:
-        return await FlowNameSignup(self).flow_name_signup()
+    async def flow_name_signup(self) -> None:
+        await FlowNameSignup(self).flow_name_signup()
 
     async def begin_verification(self, email: str, display_name: str) -> None:
         await BeginVerification(self).begin_verification(email, display_name)
