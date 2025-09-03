@@ -10,16 +10,16 @@ class Twitter:
     guest_token: str
     flow_token: str
 
-    def __init__(self) -> None:
-        self.client = Client()
+    def __init__(self, proxy: str) -> None:
+        self.client = Client(proxy=proxy)
         self.guest_token = str()
         self.flow_token = str()
 
     async def guest_activate(self) -> None:
         await GuestActivate(self).guest_activate()
 
-    async def flow_name_signup(self) -> None:
-        await FlowNameSignup(self).flow_name_signup()
+    async def flow_name_signup(self) -> str:
+        return await FlowNameSignup(self).flow_name_signup()
 
     async def begin_verification(self, email: str, display_name: str) -> None:
         await BeginVerification(self).begin_verification(email, display_name)
