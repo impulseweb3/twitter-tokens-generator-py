@@ -104,7 +104,7 @@ class FlowNameSignup:
 
         self.twitter.flow_token = json['flow_token']
 
-        blob = json['subtasks'][10]['web_modal']['url'].split('data=')[1].split('"')[0]
-        blob = parse.unquote(blob)
+        blob = json['subtasks'][11]['web_modal']['url'].split('data=')[1].split('"')[0]
+        blob = parse.unquote_plus(blob)
 
         return blob
