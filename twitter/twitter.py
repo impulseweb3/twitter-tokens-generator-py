@@ -20,3 +20,6 @@ class Twitter:
 
     async def flow_name_signup(self) -> str:
         return await FlowNameSignup(self).flow_name_signup()
+
+    async def begin_verification(self, email: str, display_name: str) -> None:
+        await BeginVerification(self).begin_verification(email, display_name)
