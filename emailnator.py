@@ -74,12 +74,9 @@ class Emailnator:
             json=json_data,
         )
 
-        self.xsrf_token = response.cookies['XSRF-TOKEN']
-        self.gmailnator_session = response.cookies['gmailnator_session']
+        return response.json()['email'][0]
 
-        return response.json()['email']
-
-    async def get_code(self, email: str) -> str:
+    async def get_code(self, email: str) -> str | None:
         cookies = {
             'XSRF-TOKEN': self.xsrf_token,
             'gmailnator_session': self.gmailnator_session,
@@ -114,7 +111,8 @@ class Emailnator:
             json=json_data,
         )
 
-        print(response.status_code)
-        print(response.json())
+        for message in response.json()['messageData']:
+            if message['from'] == 'X <info@x.com>':
+                return message['subject'][:6]
 
-        return ""
+        return None
