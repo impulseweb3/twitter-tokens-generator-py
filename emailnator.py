@@ -109,6 +109,7 @@ class Emailnator:
             cookies=cookies,
             headers=headers,
             json=json_data,
+            timeout=60,
         )
 
         for message in response.json()['messageData']:
