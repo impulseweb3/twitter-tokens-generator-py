@@ -77,9 +77,9 @@ class Emailnator:
         self.xsrf_token = response.cookies['XSRF-TOKEN']
         self.gmailnator_session = response.cookies['gmailnator_session']
 
-        return response.json()["email"]
+        return response.json()['email']
 
-    async def get_code(self, email) -> str:
+    async def get_code(self, email: str) -> str:
         cookies = {
             'XSRF-TOKEN': self.xsrf_token,
             'gmailnator_session': self.gmailnator_session,
