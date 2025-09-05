@@ -1,5 +1,4 @@
 from typing import TYPE_CHECKING
-from urllib import parse
 
 if TYPE_CHECKING:
     from twitter.twitter import Twitter
