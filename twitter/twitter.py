@@ -1,6 +1,7 @@
 from twikit import Client
 
 from twitter.begin_verification import BeginVerification
+from twitter.email_verification import EmailVerification
 from twitter.flow_name_signup import FlowNameSignup
 from twitter.guest_activate import GuestActivate
 
@@ -23,3 +24,6 @@ class Twitter:
 
     async def begin_verification(self, email: str, display_name: str) -> None:
         await BeginVerification(self).begin_verification(email, display_name)
+
+    async def email_verification(self, name: str, email: str, access_token: str, code: str) -> None:
+        await EmailVerification(self).email_verification(name, email, access_token, code)
